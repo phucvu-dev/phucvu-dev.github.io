@@ -1,102 +1,601 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f8f3ec" />
-    <meta name="description" content="Baker’s Journal — thư viện công thức và nhật ký nướng bánh." />
-    <title>Baker’s Journal — Sổ tay nướng bánh</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="shell">
-      <header class="topbar">
-        <a class="brand" href="#top" aria-label="Baker’s Journal trang chủ">
-          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-          <span class="brand-copy"><strong>Baker’s</strong><em>Journal</em></span>
-        </a>
-        <div class="topbar-meta">
-          <span class="eyebrow">SỔ TAY NƯỚNG BÁNH</span>
-          <button class="icon-button" id="refreshButton" type="button" title="Tải lại dữ liệu" aria-label="Tải lại dữ liệu">
-            <span aria-hidden="true">↻</span>
-          </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bảng quản lý liên kết web chuẩn Microsoft Fluent UI 2 kết nối trực tiếp GET /api/webs." />
+  <title>WebLinks Directory — Bảng Liên Kết Web (/api/webs)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Bỏ qua điều hướng để hỗ trợ bàn phím (WCAG AA) -->
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng đến bảng dữ liệu</a>
+
+  <div class="f-shell">
+    <!-- Fluent Top Navigation Header -->
+    <header class="f-header" role="banner">
+      <div class="f-header-brand">
+        <div class="f-header-logo" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="9" height="9" rx="1.5" fill="#0f6cbd"/>
+            <rect x="13" y="2" width="9" height="9" rx="1.5" fill="#115ea3"/>
+            <rect x="2" y="13" width="9" height="9" rx="1.5" fill="#2886de"/>
+            <rect x="13" y="13" width="9" height="9" rx="1.5" fill="#0f6cbd"/>
+          </svg>
         </div>
-      </header>
+        <div class="f-header-text">
+          <span class="f-header-eyebrow">MY LINK</span>
+          <h1 class="f-header-title">Danh Mục Liên Kết Web</h1>
+        </div>
+      </div>
 
-      <main id="top">
-        <section class="hero" aria-labelledby="pageTitle">
-          <div class="hero-copy">
-            <p class="kicker"><span class="kicker-line"></span> Bếp nhỏ, chuyện lớn</p>
-            <h1 id="pageTitle">Nướng chậm.<br /><i>Nhớ lâu.</i></h1>
-            <p class="hero-description">Một góc yên tĩnh để lưu công thức, ghi lại từng mẻ bánh và nhìn thấy tay nghề lớn lên theo thời gian.</p>
-            <div class="hero-actions">
-              <button class="primary-button" id="heroRecipesButton" type="button">Mở thư viện công thức <span>↘</span></button>
-              <span class="updated-note" id="updatedNote">Đang kết nối API…</span>
-            </div>
+      <div class="f-header-actions">
+
+        <button id="refreshButton" class="f-btn f-btn-primary" type="button">
+          ↻ Làm mới API
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Tabs Navigation (Microsoft Fluent / Fabric Theme Designer) -->
+    <nav class="f-tabs-nav" aria-label="Menu các tab ứng dụng">
+      <div class="f-tablist" role="tablist" aria-label="App Tabs">
+        <button
+          type="button"
+          role="tab"
+          id="tab-ms365"
+          class="f-tab active"
+          aria-selected="true"
+          aria-controls="panel-ms365"
+          tabindex="0"
+        >
+          MS365 Apps
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-google"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-google"
+          tabindex="-1"
+        >
+          Google Apps
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-tools"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-tools"
+          tabindex="-1"
+        >
+          Check Tools
+        </button>
+		<button
+          type="button"
+          role="tab"
+          id="tab-tool01"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-tool01"
+          tabindex="-1"
+        >
+          MGR App
+        </button>
+		    <button
+          type="button"
+          role="tab"
+          id="tab-tool02"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-tool02"
+          tabindex="-1"
+        >
+           Tools AI Code
+        </button>
+		    <button
+          type="button"
+          role="tab"
+          id="tab-tool03"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-tool03"
+          tabindex="-1"
+        >
+          Tools 03
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-tool04"
+          class="f-tab"
+          aria-selected="false"
+          aria-controls="panel-tool04"
+          tabindex="-1"
+        >
+          Tools 04
+        </button>
+      </div>
+    </nav>
+
+    <main id="main-content" class="f-main" role="main">
+      <!-- TAB 1: MS365 Apps -->
+      <div id="panel-ms365" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-ms365">
+        <section class="f-card f-slot-details-card" aria-label="Danh sách ứng dụng MS365">
+          <div class="f-palette-strip" aria-label="Danh sách nút ứng dụng MS365">
+            <button type="button" class="f-btn f-btn-empty" aria-label="Office 365" title="Office 365"><a href="https://www.office.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> Office 365 </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://outlook.office.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> Outlook </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://make.powerapps.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> PowerApp </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://tasks.office.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> Task </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://docs.microsoft.com/en-us/learn/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> MS Learn </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://portal.azure.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> Azure Portal </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://admin.cloud.microsoft/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> Admin 365 </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://onedrive.live.com/about/en-us/signin/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Gmail" title="Gmail">
+              <a href="https://onedrive.live.com" class="btn" style="background-color: #1a29f8; color: #ffffff; border-color: #ff5733;" role="button" target="_blank" rel="noopener noreferrer">OneDrive</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://teams.live.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> MS Teams </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="https://copilotstudio.microsoft.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> copilotstudio </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST"><a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a></button>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <div class="art-ring ring-one"></div>
-            <div class="art-ring ring-two"></div>
-            <div class="art-bread"><span class="bread-score score-one"></span><span class="bread-score score-two"></span><span class="bread-score score-three"></span></div>
-            <div class="art-caption"><span class="caption-dot"></span><span>made with<br /><b>patience</b></span></div>
+        </section>
+      </div>
+
+      <!-- TAB 2: Google Apps -->
+      <div id="panel-google" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-google" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách ứng dụng Google">
+          <div class="f-palette-strip" aria-label="Danh sách nút ứng dụng Google">
+            <button type="button" class="f-btn f-btn-empty" aria-label="Gmail" title="Gmail">
+              <a href="https://mail.google.com" class="btn" style="background-color: #ff5733; color: #ffffff; border-color: #ff5733;" role="button" target="_blank" rel="noopener noreferrer">Gmail</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Docs" title="Docs"><a href="https://docs.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Docs</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Sheets" title="Sheets"><a href="https://sheets.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Sheets</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Meet" title="Meet"><a href="https://meet.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Meet</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Calendar" title="Calendar"><a href="https://calendar.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Calendar</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Keep" title="Keep"><a href="https://keep.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Keep</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Chat" title="Chat"><a href="https://chat.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Chat</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Slides" title="Slides"><a href="https://slides.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Slides</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Forms" title="Forms"><a href="https://forms.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Forms</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Contacts" title="Contacts"><a href="https://contacts.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Contacts</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Maps" title="Maps"><a href="https://maps.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Maps</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Photos" title="Photos"><a href="https://photos.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Photos</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Translate" title="Translate"><a href="https://translate.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Translate</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Cloud" title="Cloud"><a href="https://console.cloud.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Cloud Console</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Admin" title="Admin"><a href="https://admin.google.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Admin</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Gmail" title="Gmail">
+              <a href="https://drive.google.com" class="btn" style="background-color: #29f033; color: #ffffff; border-color: #ff5733;" role="button" target="_blank" rel="noopener noreferrer">GG Drive</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST">
+              <a href="https://vmphuc.github.io/gemcomet bhxhdotcccddot adam erjfpxyh7jukc7vs" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> revive comet </a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="FAST" title="FAST">
+              <a href="http://10.0.0.252" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer"> FAST </a>
+            </button>
           </div>
         </section>
+      </div>
 
-        <section class="stats-row" aria-label="Tổng quan dữ liệu">
-          <div class="stat-card accent-stat"><span class="stat-label">Công thức</span><strong id="recipeCount">—</strong><span class="stat-hint">món trong thư viện</span></div>
-          <div class="stat-card"><span class="stat-label">Nhật ký</span><strong id="logCount">—</strong><span class="stat-hint">lần đã vào bếp</span></div>
-          <div class="stat-card"><span class="stat-label">Kết quả tốt</span><strong id="successRate">—</strong><span class="stat-hint">từ những mẻ đã ghi</span></div>
-          <div class="connection-card" id="connectionCard"><span class="connection-dot"></span><div><span class="stat-label">Kết nối dữ liệu</span><strong id="connectionText">Đang kiểm tra</strong></div><span class="connection-pulse"></span></div>
-        </section>
-
-        <section class="workspace" id="library">
-          <aside class="sidebar">
-            <div class="sidebar-heading"><span class="section-number">01</span><h2>Khám phá</h2></div>
-            <nav class="view-switcher" aria-label="Chọn loại dữ liệu">
-              <button class="view-tab active" type="button" data-view="recipes"><span class="tab-icon">✦</span><span>Công thức</span><span class="tab-count" id="recipeTabCount">—</span></button>
-              <button class="view-tab" type="button" data-view="logs"><span class="tab-icon">◒</span><span>Nhật ký mẻ bánh</span><span class="tab-count" id="logTabCount">—</span></button>
-            </nav>
-            <div class="filter-panel" id="recipeFilters">
-              <div class="filter-heading"><span>LỌC CÔNG THỨC</span><button class="text-button" id="clearRecipeFilters" type="button">Xóa lọc</button></div>
-              <label class="field-label" for="recipeSearch">Tìm trong thư viện</label>
-              <div class="search-field"><span aria-hidden="true">⌕</span><input id="recipeSearch" type="search" placeholder="Tên, nhãn, mô tả…" autocomplete="off" /></div>
-              <label class="field-label" for="categoryFilter">Danh mục</label>
-              <select class="select-field" id="categoryFilter"><option value="all">Tất cả danh mục</option><option value="Bánh mì">Bánh mì</option><option value="Bánh ngọt">Bánh ngọt</option><option value="Cookies">Cookies</option><option value="Mousse">Mousse</option><option value="Khác">Khác</option></select>
-              <label class="field-label" for="difficultyFilter">Độ khó</label>
-              <select class="select-field" id="difficultyFilter"><option value="all">Mọi cấp độ</option><option value="1">1 — Dễ</option><option value="2">2 — Nhẹ nhàng</option><option value="3">3 — Vừa sức</option><option value="4">4 — Thử thách</option><option value="5">5 — Chuyên nghiệp</option></select>
-            </div>
-            <div class="filter-panel hidden" id="logFilters">
-              <div class="filter-heading"><span>LỌC NHẬT KÝ</span><button class="text-button" id="clearLogFilters" type="button">Xóa lọc</button></div>
-              <label class="field-label" for="logSearch">Tìm trong nhật ký</label>
-              <div class="search-field"><span aria-hidden="true">⌕</span><input id="logSearch" type="search" placeholder="Công thức, ghi chú…" autocomplete="off" /></div>
-              <label class="field-label" for="resultFilter">Kết quả mẻ bánh</label>
-              <select class="select-field" id="resultFilter"><option value="all">Tất cả kết quả</option><option value="Tuyệt vời">Tuyệt vời</option><option value="Tốt">Tốt</option><option value="Tạm ổn">Tạm ổn</option><option value="Thất bại">Thất bại</option></select>
-            </div>
-            <div class="api-note"><span class="api-note-mark">i</span><p>Dữ liệu được lấy trực tiếp từ <strong>REST API</strong> của Baker’s Journal.</p></div>
-          </aside>
-
-          <div class="content-area">
-            <div class="content-header">
-              <div><p class="section-kicker" id="contentKicker">THƯ VIỆN CÔNG THỨC</p><h2 id="contentTitle">Món quen, vị mới</h2></div>
-              <span class="result-summary" id="resultSummary">Đang tải…</span>
-            </div>
-            <div class="notice-area" id="noticeArea" aria-live="polite"></div>
-            <div class="recipe-grid" id="recipeGrid"></div>
-            <div class="log-list hidden" id="logList"></div>
+      <!-- TAB 3: Check Tools -->
+      <div id="panel-tools" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-tools" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách công cụ kiểm tra">
+          <div class="f-palette-strip" aria-label="Danh sách nút công cụ kiểm tra">
+            <button type="button" class="f-btn f-btn-empty" aria-label="VirusTotal" title="VirusTotal">
+              <a href="https://www.virustotal.com" class="btn" style="background-color: #14ee31; color: #290303; border-color: #ff5733;" role="button" target="_blank" rel="noopener noreferrer">VirusTotal</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Ping" title="Ping"><a href="https://ping.eu" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ping</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="DNS Check" title="DNS Check"><a href="https://dnschecker.org" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">DNS Check</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Speedtest" title="Speedtest"><a href="https://www.speedtest.net" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Speedtest</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="IP Lookup" title="IP Lookup"><a href="https://whatismyipaddress.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">IP Lookup</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="SSL Check" title="SSL Check"><a href="https://www.sslshopper.com/ssl-checker.html" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">SSL Check</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Port Check" title="Port Check"><a href="https://canyouseeme.org" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Port Check</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Whois" title="Whois"><a href="https://whois.domaintools.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Whois</a></button>
+            
+            <button type="button" class="f-btn f-btn-empty" aria-label="MX Toolbox" title="MX Toolbox"><a href="https://mxtoolbox.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">MX Toolbox</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="HTTP Status" title="HTTP Status"><a href="https://httpstatus.io" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">HTTP Status</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Down For All" title="Down For All"><a href="https://downforeveryoneorjustme.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Down For All</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Blacklist" title="Blacklist"><a href="https://mxtoolbox.com/blacklists.aspx" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Blacklist</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="BGP View" title="BGP View"><a href="https://bgpview.io" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">BGP View</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="Fast.com" title="Fast.com"><a href="https://fast.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Fast.com</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="IntoDNS" title="IntoDNS"><a href="https://intodns.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">IntoDNS</a></button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://endoflife.date/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">SW EOL Check</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://testconnectivity.microsoft.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">MS Test Tools</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.urlvoid.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">URLVoid</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://geekflare.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Geekflare</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://congcu.khonggianmang.vn/check-ipma/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">VN Check Tools</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://talosintelligence.com/software" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Talos check</a>
+            </button>
           </div>
         </section>
-
-        <section class="recipe-detail hidden" id="recipeDetail" aria-labelledby="detailTitle">
-          <div class="detail-topline"><span class="section-number">02</span><span>GHI CHÉP CÔNG THỨC</span><button class="close-button" id="closeDetail" type="button" aria-label="Đóng chi tiết">×</button></div>
-          <div class="detail-layout" id="detailContent"></div>
+      </div>
+	  <!-- TAB 4: MGR App -->
+      <div id="panel-tool01" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-tool01" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách công cụ kiểm tra">
+          <div class="f-palette-strip" aria-label="Danh sách nút công cụ kiểm tra">
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="http://myzion01.synology.me:88/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">MyWiki</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="http://myzion01.synology.me:92/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">MyEbook</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTSeDbr-aRxjsiIHGLqoaBPPmRjWLGXVGgKBbbojKKeVDAUuke1kF1_l17FDTUkwne2gFNeF7NfPXK-/pubhtml?gid=0&single=true" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Gem Book</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="http://myzion01.synology.me:8082/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">My Music</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="VirusTotal" title="VirusTotal">
+              <a href="https://john-vu.gitbook.io/coding/" class="btn" style="background-color: #14ee31; color: #290303; border-color: #ff5733;" role="button" target="_blank" rel="noopener noreferrer">My GitBook1</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://gemmine.gitbook.io/link/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">My GitBook2</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ap002-kanban-task.vercel.app/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">MyTask</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://gitbook.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Gitbook</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.coursera.org/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">coursera</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.udemy.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Udemy</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://github.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://gitlab.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">GitLab</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://bitbucket.org/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">BitBucket</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ankiweb.net/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Anki Web</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.urlvoid.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">URLVoid</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.urlvoid.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">URLVoid</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.urlvoid.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">URLVoid</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.urlvoid.com" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">URLVoid</a>
+            </button>
+          </div>
         </section>
-      </main>
+      </div>
+ <!-- TAB 5: Tools AI Code -->
+      <div id="panel-tool02" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-tool02" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách công cụ kiểm tra">
+          <div class="f-palette-strip" aria-label="Danh sách nút công cụ kiểm tra">
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://gemini.google.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Gemini</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://claude.ai/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Claude</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://chat.openai.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Chat GPT</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://copilot.microsoft.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Copilot</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://chat.deepseek.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Deepseek</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://grok.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Grok</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.futurepedia.io/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">All A.I List1</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.toolify.ai/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">All A.I List2</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://notebooklm.google/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">NoteBooklm</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
 
-      <footer class="footer"><div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span></span><span>Baker’s Journal</span></div><span>Ghi lại để lần sau ngon hơn.</span><span class="footer-api">API <b>●</b> ONLINE-READY</span></footer>
-    </div>
-    <script src="app.js" defer></script>
-  </body>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://huggingface.co/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">hugging face</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://flow.google.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I Flow GG Video</a>
+            </button>
+                        <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://aistudio.google.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">A.I GG Studio</a>
+            </button>
+          </div>
+        </section>
+      </div>
+ <!-- TAB 6: Tools 03 -->
+      <div id="panel-tool03" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-tool03" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách công cụ kiểm tra">
+          <div class="f-palette-strip" aria-label="Danh sách nút công cụ kiểm tra">
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://web.telegram.org/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Telegram Web</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://chat.zalo.me/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Zalo Web</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://send-anywhere.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">SendAnyWhere</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.transfernow.net/en" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">transfernow</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://transfer.it/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">transfer</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.rakuten-drive.com/cloud/mydrive/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Rakuten Drive</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://my.pcloud.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Pcloud</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.terabox.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Terabox</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://mega.nz/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">mega nz</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+          </div>
+        </section>
+      </div>	  
+      <!-- TAB 7: Tools 04 -->
+      <div id="panel-tool04" class="f-tabpanel" role="tabpanel" aria-labelledby="tab-tool04" hidden>
+        <section class="f-card f-slot-details-card" aria-label="Danh sách công cụ kiểm tra">
+          <div class="f-palette-strip" aria-label="Danh sách nút công cụ kiểm tra">
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://quantrimang.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">quantrimang</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://dev.to/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">dev.to</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://app.daily.dev/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">daily.dev</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.windowscentral.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">windowscentral</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.securitymagazine.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">securitymagazine</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://thehackernews.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">thehackernews</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.pcworld.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">pcworld</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://www.bleepingcomputer.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">bleepingcomputer</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://tungtek.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">tungtek</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+            <button type="button" class="f-btn f-btn-empty" aria-label="URLVoid" title="URLVoid">
+              <a href="https://ollama.com/" class="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">Ollama</a>
+            </button>
+          </div>
+        </section>
+      </div>	
+	  
+        <!-- Thống kê Fluent Stat Cards -->
+        <section class="f-stats-grid" aria-label="Thống kê dữ liệu">
+          <article class="f-stat-card">
+            <span class="f-stat-title">Tổng số liên kết (Dòng)</span>
+            <span class="f-stat-number" id="linkCount">0</span>
+            <span class="f-stat-sub" id="filteredCountNote">1 dòng = 1 liên kết web</span>
+          </article>
+
+          <article class="f-stat-card">
+            <span class="f-stat-title">Thẻ nhóm (Web Cards)</span>
+            <span class="f-stat-number" id="cardCount">0</span>
+            <span class="f-stat-sub">Nhóm thẻ từ /api/webs</span>
+          </article>
+
+          <article class="f-stat-card">
+            <span class="f-stat-title">Nhãn chủ đề (Tags)</span>
+            <span class="f-stat-number" id="tagCount">0</span>
+            <span class="f-stat-sub">Tags phân loại duy nhất</span>
+          </article>
+
+          <article class="f-stat-card" id="connectionCard">
+            <span class="f-stat-title">Trạng thái kết nối</span>
+            <span class="f-stat-number f-stat-number-sm" id="connectionText">Đang gọi API…</span>
+            <span class="f-stat-sub" id="updatedNote">Đang gửi yêu cầu GET /api/webs</span>
+          </article>
+        </section>
+
+        <!-- Fluent InfoBar / Banner Thông báo & Hướng dẫn CORS (Cách 2) -->
+        <section id="noticeArea" class="f-notice-container" aria-live="polite"></section>
+
+        <!-- Bảng dữ liệu DataGrid & Bộ lọc -->
+        <section class="f-card f-datagrid-card" aria-labelledby="tableHeading">
+          <div class="f-card-header">
+            <div>
+              <h2 id="tableHeading" class="f-card-title">Bảng Liên Kết Web (DataGrid)</h2>
+              <p class="f-card-desc">
+                Mỗi hàng hiển thị một liên kết trong <code>links[]</code> kèm thông tin nhóm <code>WebCard</code> tương ứng.
+              </p>
+            </div>
+            <div class="f-badge f-badge-brand" id="sourceBadge">Nguồn: Live GET /api/webs</div>
+          </div>
+
+          <!-- Fluent Toolbar & Filters -->
+          <form class="f-toolbar" id="filterForm" role="search" aria-label="Bộ lọc danh sách liên kết">
+            <div class="f-field f-field-search">
+              <label class="f-label" for="searchInput">Tìm kiếm từ khóa</label>
+              <div class="f-input-wrapper">
+                <input
+                  id="searchInput"
+                  class="f-input"
+                  type="search"
+                  placeholder="Tìm tiêu đề link, URL, nhóm, mô tả, tag…"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="f-field">
+              <label class="f-label" for="colorFilter">Màu nhóm (Color)</label>
+              <select id="colorFilter" class="f-select">
+                <option value="ALL">Tất cả màu</option>
+              </select>
+            </div>
+
+            <div class="f-field">
+              <label class="f-label" for="tagFilter">Nhãn (Tag)</label>
+              <select id="tagFilter" class="f-select">
+                <option value="ALL">Tất cả tags</option>
+              </select>
+            </div>
+
+            <div class="f-field">
+              <label class="f-label" for="pageSizeSelect">Phân trang (Số mục)</label>
+              <select id="pageSizeSelect" class="f-select">
+                <option value="12">12 mục / trang</option>
+                <option value="36">36 mục / trang</option>
+                <option value="120">120 mục / trang</option>
+                <option value="ALL">Tất cả (All)</option>
+              </select>
+            </div>
+
+            <div class="f-field f-field-btn">
+              <button id="clearFiltersButton" class="f-btn f-btn-subtle" type="button">
+                Xóa bộ lọc
+              </button>
+            </div>
+          </form>
+
+          <!-- DataGrid Table -->
+          <div class="f-table-container" role="region" aria-labelledby="tableHeading" tabindex="0">
+            <table class="f-table" id="webLinksTable">
+              <caption class="sr-only">Danh sách liên kết web từ endpoint GET /api/webs</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="th-index">#</th>
+                  <th scope="col" class="th-group">Nhóm (Web Card)</th>
+                  <th scope="col" class="th-thumb">Thumbnail</th>
+                  <th scope="col" class="th-title">Tiêu đề Link</th>
+                  <th scope="col" class="th-url">URL</th>
+                  <th scope="col" class="th-desc">Mô tả</th>
+                  <th scope="col" class="th-tags">Tags</th>
+                  <th scope="col" class="th-date">Ngày tạo</th>
+                </tr>
+              </thead>
+              <tbody id="webTableBody">
+                <tr class="f-state-row">
+                  <td colspan="8">
+                    <div class="f-state-box">
+                      <div class="f-spinner" aria-hidden="true"></div>
+                      <p class="f-state-title">Đang tải dữ liệu từ GET /api/webs…</p>
+                      <p class="f-state-sub">Vui lòng chờ phản hồi từ máy chủ Render.</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Fluent Pagination Bar -->
+          <footer class="f-pagination-bar" aria-label="Điều khiển phân trang">
+            <div class="f-pagination-info">
+              <span id="paginationSummary">Hiển thị 0 - 0 trong tổng số 0 liên kết</span>
+            </div>
+
+            <div class="f-pagination-nav">
+              <button
+                id="firstPageBtn"
+                class="f-btn f-btn-page"
+                type="button"
+                title="Về trang đầu tiên"
+                aria-label="Về trang đầu tiên"
+              >
+                «
+              </button>
+              <button
+                id="prevPageBtn"
+                class="f-btn f-btn-page"
+                type="button"
+                title="Về trang trước"
+                aria-label="Về trang trước"
+              >
+                ‹
+              </button>
+              <span class="f-page-indicator" id="pageIndicator" aria-live="polite">
+                Trang 1 / 1
+              </span>
+              <button
+                id="nextPageBtn"
+                class="f-btn f-btn-page"
+                type="button"
+                title="Sang trang sau"
+                aria-label="Sang trang sau"
+              >
+                ›
+              </button>
+              <button
+                id="lastPageBtn"
+                class="f-btn f-btn-page"
+                type="button"
+                title="Đến trang cuối cùng"
+                aria-label="Đến trang cuối cùng"
+              >
+                »
+              </button>
+            </div>
+          </footer>
+        </section>
+    </main>
+
+    <!-- Fluent Footer -->
+    <footer class="f-footer" role="contentinfo">
+      <p class="f-footer-text">
+        Kết nối trực tiếp <code>GET https://ap002-google-tasks-clone.onrender.com/api/webs</code> · Chuẩn giao diện <strong>Microsoft Fluent UI 2</strong>.
+      </p>
+    </footer>
+  </div>
+</body>
 </html>
